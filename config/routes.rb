@@ -1,4 +1,8 @@
 DndCc::Application.routes.draw do
+  resources :character_classes
+
+  resources :races
+
   resources :players
 
   resources :characters
