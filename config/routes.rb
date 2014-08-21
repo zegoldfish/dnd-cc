@@ -1,4 +1,12 @@
 DndCc::Application.routes.draw do
+  resources :item_types
+
+  resources :items
+
+  resources :backgrounds
+
+  resources :alignments
+
   resources :character_classes
 
   resources :races

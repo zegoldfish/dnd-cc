@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140820230159) do
+ActiveRecord::Schema.define(version: 20140821015754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alignments", force: true do |t|
+    t.string   "alignment_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "backgrounds", force: true do |t|
+    t.string   "background_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "character_classes", force: true do |t|
     t.string   "character_class_name"
@@ -29,6 +41,23 @@ ActiveRecord::Schema.define(version: 20140820230159) do
     t.datetime "updated_at"
     t.integer  "race_id"
     t.integer  "character_class_id"
+    t.string   "sex"
+    t.integer  "height"
+    t.integer  "alignment_id"
+    t.integer  "experience_points"
+  end
+
+  create_table "item_types", force: true do |t|
+    t.string   "item_type_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items", force: true do |t|
+    t.string   "item_name"
+    t.integer  "item_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "players", force: true do |t|
