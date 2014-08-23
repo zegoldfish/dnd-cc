@@ -1,0 +1,58 @@
+<span class="debug">
+	<%= @character.inspect %>
+</span>
+
+<div id="character_sheet_container">
+
+	<div id="header">
+		<div id="character_name">
+			<%= @character.character_name %>
+		</div>
+		<div id="character_info">
+			<div id="class_level">
+				<% @character.character_classes.each do |cc| %>
+					<%= cc.character_class_type.character_class_name %>, <%= cc.level %>; 
+				<% end %>
+			</div>
+			<div id="background">
+				<% @character.character_backgrounds.each do |cb| %>
+					<%= cb.background.background_name %>
+				<% end %>
+			</div>
+			<div id="player_name"><%= @character.player.player_name %></div>
+			<div id="race"><%= @character.race.race_name %></div>
+			<div id="alignment"><%= @character.alignment.alignment_name %></div>
+			<div id="experience_points"><%= @character.experience_points %></div>
+		</div>
+	</div>
+
+	<div id="left_col">
+		<div id="ability_scores_container">
+			<div id="strength"></div>
+			<div id="dexterity"></div>
+			<div id="constitution"></div>
+			<div id="intelligence"></div>
+			<div id="wisdom"></div>
+			<div id="charisma"></div>
+		</div>
+
+		<div id="inspiration_container"></div>
+		<div id="proficiency_bonus_container"></div>
+		<div id="saving_throws_container"></div>
+		<div id="skills_container"></div>
+		<div id="passive_perception_container"></div>
+		<div id="proficiencies_languages_container"></div>
+	</div>
+
+	<div id="center_col">
+		<div id="combat_stats_container"></div>
+		<div id="attacks_spellcasting_container"></div>
+		<div id="equipment_container"></div>
+	</div>
+
+	<div id="right_col">
+		<div id="traits_container"></div>
+		<div id="feats_container"></div>
+	</div>
+
+</div>

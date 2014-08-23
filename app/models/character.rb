@@ -4,4 +4,5 @@ class Character < ActiveRecord::Base
 	belongs_to :alignment
 	has_many :character_classes
 	has_many :character_attributes
+	has_many :character_backgrounds
 end

@@ -1,4 +1,8 @@
 DndCc::Application.routes.draw do
+  resources :character_backgrounds
+
+  resources :levels
+
   resources :race_attribute_types
 
   resources :race_attributes
@@ -32,6 +36,8 @@ DndCc::Application.routes.draw do
   resources :characters
 
   root 'welcome#index'
+
+  get '/characters/character_sheet/:id' => 'characters#character_sheet'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

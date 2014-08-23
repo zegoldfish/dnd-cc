@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140823041411) do
+ActiveRecord::Schema.define(version: 20140823174307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 20140823041411) do
     t.datetime "updated_at"
   end
 
+  create_table "character_backgrounds", force: true do |t|
+    t.integer  "character_id"
+    t.integer  "background_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "character_class_types", force: true do |t|
     t.string   "character_class_name"
     t.datetime "created_at"
@@ -60,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140823041411) do
     t.integer  "character_class_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "level"
   end
 
   create_table "characters", force: true do |t|
@@ -71,8 +79,8 @@ ActiveRecord::Schema.define(version: 20140823041411) do
     t.string   "sex"
     t.integer  "height"
     t.integer  "alignment_id"
-    t.integer  "experience_points"
     t.integer  "campaign_id"
+    t.integer  "experience_points"
   end
 
   create_table "item_types", force: true do |t|
@@ -90,6 +98,12 @@ ActiveRecord::Schema.define(version: 20140823041411) do
 
   create_table "languages", force: true do |t|
     t.string   "language_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "levels", force: true do |t|
+    t.integer  "experience_points"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
