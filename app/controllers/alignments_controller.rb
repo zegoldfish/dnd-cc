@@ -24,6 +24,7 @@ class AlignmentsController < ApplicationController
   # POST /alignments
   # POST /alignments.json
   def create
+    Rails.logger.debug("Alignment Parameter: #{alignment_params}")
     @alignment = Alignment.new(alignment_params)
 
     respond_to do |format|
@@ -69,6 +70,7 @@ class AlignmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alignment_params
-      params[:alignment]
+      #params[:alignment]
+      params.require(:alignment).permit(:alignment_name)
     end
 end

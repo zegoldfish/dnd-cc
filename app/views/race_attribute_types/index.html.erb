@@ -1,0 +1,25 @@
+<h1>Listing race_attribute_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @race_attribute_types.each do |race_attribute_type| %>
+      <tr>
+        <td><%= link_to 'Show', race_attribute_type %></td>
+        <td><%= link_to 'Edit', edit_race_attribute_type_path(race_attribute_type) %></td>
+        <td><%= link_to 'Destroy', race_attribute_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Race attribute type', new_race_attribute_type_path %>

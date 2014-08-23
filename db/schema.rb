@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140821015754) do
+ActiveRecord::Schema.define(version: 20140823041411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,36 @@ ActiveRecord::Schema.define(version: 20140821015754) do
     t.datetime "updated_at"
   end
 
-  create_table "character_classes", force: true do |t|
+  create_table "campaigns", force: true do |t|
+    t.string   "campaign_name"
+    t.integer  "rule_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "character_attribute_types", force: true do |t|
+    t.string   "attribute_name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "character_attributes", force: true do |t|
+    t.integer  "character_attribute_type_id"
+    t.string   "attribute_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "character_class_types", force: true do |t|
     t.string   "character_class_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "character_classes", force: true do |t|
+    t.integer  "character_id"
+    t.integer  "character_class_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,11 +68,11 @@ ActiveRecord::Schema.define(version: 20140821015754) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "race_id"
-    t.integer  "character_class_id"
     t.string   "sex"
     t.integer  "height"
     t.integer  "alignment_id"
     t.integer  "experience_points"
+    t.integer  "campaign_id"
   end
 
   create_table "item_types", force: true do |t|
@@ -60,14 +88,40 @@ ActiveRecord::Schema.define(version: 20140821015754) do
     t.datetime "updated_at"
   end
 
+  create_table "languages", force: true do |t|
+    t.string   "language_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "players", force: true do |t|
     t.text     "player_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "race_attribute_types", force: true do |t|
+    t.string   "race_attribute_type"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "race_attributes", force: true do |t|
+    t.integer  "race_attribute_type_id"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "races", force: true do |t|
     t.string   "race_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rules", force: true do |t|
+    t.string   "rule_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

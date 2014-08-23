@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th></th>
+      <th>Background</th>
       <th></th>
       <th></th>
     </tr>
@@ -12,6 +12,7 @@
   <tbody>
     <% @backgrounds.each do |background| %>
       <tr>
+        <td><%= background.background_name %></td>
         <td><%= link_to 'Show', background %></td>
         <td><%= link_to 'Edit', edit_background_path(background) %></td>
         <td><%= link_to 'Destroy', background, method: :delete, data: { confirm: 'Are you sure?' } %></td>

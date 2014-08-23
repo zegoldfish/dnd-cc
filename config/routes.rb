@@ -1,4 +1,22 @@
 DndCc::Application.routes.draw do
+  resources :race_attribute_types
+
+  resources :race_attributes
+
+  resources :languages
+
+  resources :character_attribute_types
+
+  resources :character_attributes
+
+  resources :character_class_types
+
+  resources :character_classes
+
+  resources :campaigns
+
+  resources :rules
+
   resources :item_types
 
   resources :items
@@ -6,8 +24,6 @@ DndCc::Application.routes.draw do
   resources :backgrounds
 
   resources :alignments
-
-  resources :character_classes
 
   resources :races
 

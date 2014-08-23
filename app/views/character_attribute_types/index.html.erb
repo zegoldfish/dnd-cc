@@ -1,0 +1,28 @@
+<h1>Listing character_attribute_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute Name</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @character_attribute_types.each do |cat| %>
+      <tr>
+        <td><%= cat.attribute_name %></td>
+        <td><%= cat.description %></td>
+        <td><%= link_to 'Show', cat %></td>
+        <td><%= link_to 'Edit', edit_character_attribute_type_path(cat) %></td>
+        <td><%= link_to 'Destroy', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Character attribute type', new_character_attribute_type_path %>
