@@ -51,11 +51,3 @@ test:
   pool: 5
   username: dnd_cc
   password:
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: dnd_cc_production
-  pool: 5
-  username: dnd_cc
-  password:
