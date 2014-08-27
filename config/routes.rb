@@ -39,7 +39,7 @@ DndCc::Application.routes.draw do
 
   resources :characters
 
-  root 'welcome#index'
+  root 'characters#index'
 
   get '/characters/character_sheet/:id' => 'characters#character_sheet'
   # The priority is based upon order of creation: first created -> highest priority.
