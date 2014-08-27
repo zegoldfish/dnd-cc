@@ -47,3 +47,6 @@ end
 gem 'unicorn'
 
 gem 'debugger'
+
+# Logging for heroku
+gem 'rails_12factor', group: :production
