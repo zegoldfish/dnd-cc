@@ -1,0 +1,25 @@
+<h1>Listing character_ability_scores</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @character_ability_scores.each do |character_ability_score| %>
+      <tr>
+        <td><%= link_to 'Show', character_ability_score %></td>
+        <td><%= link_to 'Edit', edit_character_ability_score_path(character_ability_score) %></td>
+        <td><%= link_to 'Destroy', character_ability_score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Character ability score', new_character_ability_score_path %>

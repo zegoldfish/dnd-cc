@@ -1,0 +1,2 @@
+module CharacterAbilityScoresHelper
+end

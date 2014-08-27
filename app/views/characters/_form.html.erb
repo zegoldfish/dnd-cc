@@ -11,6 +11,31 @@
     </div>
   <% end %>
 
+  <label for="player">Player:</label>
+  <select name="player" id="character[player_id]">
+    <% Player.all.each do |p| %>
+    <option id="<%= p.id %>" <%= @character.player_id == p.id ? "select='selected'" : nil %>><%= p.player_name %></option>
+    <% end %>
+  </select><br />
+  <%= link_to 'New Player', new_player_path %><br />
+
+  <%= f.label :character_name, "Character Name:" %>
+  <%= f.text_field :character_name %><br />
+
+  <div id="character_classes">
+    <% @character.character_classes.each do |cc| %>
+      <label>Class:</label> <%= cc.character_class_type.character_class_name %>, 
+      <label>Level:</label> <%= cc.level %>
+      <button id="level_up" <%= @available_experience > 0 ? nil : "disabled" %>>Level Up</button>
+      <br />
+    <% end %>
+  </div>
+
+  <div id="experience">
+    <label>Total Experience:</label> <span id="total_exp"><%= @character.experience_points %></span><br />
+    <label>Available Experience:</label> <span id="available_exp"><%= @available_experience %></span><br />
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

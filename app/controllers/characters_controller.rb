@@ -69,10 +69,13 @@ class CharactersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_character
       @character = Character.find(params[:id])
+
+      xp = Experience.new
+      @available_experience = xp.calculate_available_experience(@character)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params[:character]
+      params[:character].permit(:character_name, :race_id)
     end
 end

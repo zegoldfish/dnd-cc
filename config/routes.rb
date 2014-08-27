@@ -1,4 +1,8 @@
 DndCc::Application.routes.draw do
+  resources :ability_scores
+
+  resources :character_ability_scores
+
   resources :character_backgrounds
 
   resources :levels

@@ -1,0 +1,22 @@
+<%= form_for(@ability_score) do |f| %>
+  <% if @ability_score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ability_score.errors.count, "error") %> prohibited this ability_score from being saved:</h2>
+
+      <ul>
+      <% @ability_score.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :ability_score_name %>
+  <%= f.text_field :ability_score_name %><br />
+  <%= f.label :description %><br />
+  <%= f.text_area :description %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

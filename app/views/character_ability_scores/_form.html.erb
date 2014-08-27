@@ -1,0 +1,17 @@
+<%= form_for(@character_ability_score) do |f| %>
+  <% if @character_ability_score.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@character_ability_score.errors.count, "error") %> prohibited this character_ability_score from being saved:</h2>
+
+      <ul>
+      <% @character_ability_score.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
