@@ -36,6 +36,27 @@
     <label>Available Experience:</label> <span id="available_exp"><%= @available_experience %></span><br />
   </div>
 
+  <div id="skills">
+    <h2>Skills</h2>
+    <table>
+      <thead>
+        <th>Skill</th>
+        <th>Trained</th>
+        <th>Modifier</th>
+      </thead>
+      <tbody>
+      <% Skill.all.each do |s| %>
+        <% character_skill = CharacterSkill.where(character_id: @character.id, skill_id: s.id) %>
+        <tr>
+          <td><%= s.skill_name %></td>
+          <td><input type="radio" name="character_skill[trained]" value="skill_id[<%= s.id %>]" <%= character_skill.trained ? "checked='checked'" : nil unless character_skill.empty? %> /></td>
+          <td><input type="number" disabled="true" /></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -7,4 +7,5 @@ class Character < ActiveRecord::Base
 	has_many :character_attributes
 	has_many :character_backgrounds
 	has_many :character_ability_scores
+	has_many :character_skills
 end

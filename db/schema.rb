@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826231317) do
+ActiveRecord::Schema.define(version: 20140828010951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,15 @@ ActiveRecord::Schema.define(version: 20140826231317) do
     t.integer  "level"
   end
 
+  create_table "character_skills", force: true do |t|
+    t.integer  "character_id"
+    t.integer  "skill_id"
+    t.boolean  "trained"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "value"
+  end
+
   create_table "characters", force: true do |t|
     t.integer  "player_id"
     t.text     "character_name"
@@ -153,6 +162,14 @@ ActiveRecord::Schema.define(version: 20140826231317) do
     t.string   "rule_name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "skills", force: true do |t|
+    t.string   "skill_name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "ability_score_id"
   end
 
 end
