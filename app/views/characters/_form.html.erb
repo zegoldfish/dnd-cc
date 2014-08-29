@@ -11,10 +11,10 @@
     </div>
   <% end %>
 
-  <label for="player">Player:</label>
-  <select name="player" id="character[player_id]">
+  <label for="character_player_id">Player:</label>
+  <select name="character[player_id]" id="character_player_id">
     <% Player.all.each do |p| %>
-    <option id="<%= p.id %>" <%= @character.player_id == p.id ? "select='selected'" : nil %>><%= p.player_name %></option>
+    <option value="<%= p.id %>" <%= @character.player_id == p.id ? "selected='selected'" : nil %>><%= p.player_name %></option>
     <% end %>
   </select><br />
   <%= link_to 'New Player', new_player_path %><br />
@@ -22,40 +22,32 @@
   <%= f.label :character_name, "Character Name:" %>
   <%= f.text_field :character_name %><br />
 
-  <div id="character_classes">
-    <% @character.character_classes.each do |cc| %>
-      <label>Class:</label> <%= cc.character_class_type.character_class_name %>, 
-      <label>Level:</label> <%= cc.level %>
-      <button id="level_up" <%= @available_experience > 0 ? nil : "disabled" %>>Level Up</button>
-      <br />
+  <label for="character_race_id">Race:</label>
+  <select name="character[race_id]" id="character_race_id">
+    <% Race.all.each do |r| %>
+    <option value="<%= r.id %>" <%= @character.race_id == r.id ? "selected='selected'" : nil %>><%= r.race_name %></option>
+    <% end %>
+  </select><br />
+
+  <label for="character_alignment_id">Alignment:</label>
+  <select name="character[alignment_id]" id="character_alignment_id">
+    <% Alignment.all.each do |a| %>
+    <option value="<%= a.id %>" <%= @character.alignment_id == a.id ? "selected='selected'" : nil %>><%= a.alignment_name %></option>
+    <% end %>
+  </select>
+
+  <div id="experience">
+    <label>Total Experience:</label> 
+    <input type="number" id="charcater_experience_points" name="character[experience_points]" value="<%= @character.experience_points ? @character.experience_points : 0 %>" />
+    <br />
+    <% if @available_experience %>
+    <label>Available Experience:</label> <span id="available_exp"><%= @available_experience %></span><br />
     <% end %>
   </div>
 
-  <div id="experience">
-    <label>Total Experience:</label> <span id="total_exp"><%= @character.experience_points %></span><br />
-    <label>Available Experience:</label> <span id="available_exp"><%= @available_experience %></span><br />
-  </div>
+  <%= render "character_class" %>
 
-  <div id="skills">
-    <h2>Skills</h2>
-    <table>
-      <thead>
-        <th>Skill</th>
-        <th>Trained</th>
-        <th>Modifier</th>
-      </thead>
-      <tbody>
-      <% Skill.all.each do |s| %>
-        <% character_skill = CharacterSkill.where(character_id: @character.id, skill_id: s.id) %>
-        <tr>
-          <td><%= s.skill_name %></td>
-          <td><input type="radio" name="character_skill[trained]" value="skill_id[<%= s.id %>]" <%= character_skill.trained ? "checked='checked'" : nil unless character_skill.empty? %> /></td>
-          <td><input type="number" disabled="true" /></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </div>
+  <%= render "skills" %>
 
   <div class="actions">
     <%= f.submit %>

@@ -1,0 +1,8 @@
+<% @character.character_classes.each do |cc| %>
+	<select name="character_class[character_class_type_id]">
+		<% @character_class_types.each do |cct| %>
+		<option value="<%= cct.id %>" <%= cc.character_class_type_id == cct.id ? "selected=selected" : nil %>><%= cct.character_class_name %></option>
+		<% end %>
+	</select>
+	<input type="number" name="character_class[level]" value="<%= cc.level %>" min="<%= @levels.min.id %>" max="<%= @levels.max.id %>" /><br />
+<% end %>

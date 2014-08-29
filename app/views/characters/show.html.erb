@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<pre><%= params.inspect %></pre>
+<pre><%= defined? character_params ? character_params.inspect : nil %></pre>
+
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>

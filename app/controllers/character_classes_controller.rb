@@ -64,7 +64,13 @@ class CharacterClassesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_character_class
-      @character_class = CharacterClass.find(params[:id])
+      if @character_class
+        @character_class = CharacterClass.find_by_character_id(@character.id)
+      else
+        @character_class = CharacterClass.find(params[:id])
+      end
+
+      @character_class_type = CharacterClassType.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

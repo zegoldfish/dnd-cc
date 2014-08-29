@@ -72,10 +72,16 @@ class CharactersController < ApplicationController
 
       xp = Experience.new
       @available_experience = xp.calculate_available_experience(@character)
+
+      @character_class_types = CharacterClassType.all.order(:character_class_name)
+
+      @levels = Level.all
+
+      @skills = Skill.all.order(:skill_name)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def character_params
-      params[:character].permit(:character_name, :race_id)
+      params[:character].permit(:character_name, :race_id, :player_id, :height, :sex, :alignment_id, :campaign_id, :experience_points)
     end
 end
