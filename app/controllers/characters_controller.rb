@@ -43,7 +43,7 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @character.update(character_params)
         format.html { redirect_to @character, notice: 'Character was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: character_params }
       else
         format.html { render action: 'edit' }
         format.json { render json: @character.errors, status: :unprocessable_entity }
